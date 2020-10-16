@@ -13,10 +13,20 @@ students = [
   "Norman Bates"
 ]
 # Printing the list of all academy students
-puts "The students of Villains Academy"
-puts "-------------"
-students.each do |student|
-  puts student
+def print_header
+  puts "The students of Villains Academy"
+  puts "-------------"
 end
-# Print the total number of students enrolled
-puts "Overall, we have #{students.count} great students"
+def print(names)
+  names.each do |name|
+  puts name
+  end
+end
+def print_footer(names)
+  # Print the total number of students enrolled
+  puts "Overall, we have #{names.count} great students"
+end
+# Nothing happens until we call the methods
+print_header
+print(students)
+print_footer(students)
