@@ -1,6 +1,6 @@
 # Student Directory #
 
-The Student Directory ruby script (directory.rb) enables the user to manage the list/directory of students that are currently enrolled at Villains Academy :smiling_imp:.
+The Student Directory ruby script (directory.rb) enables the user to manage the list/directory of students that are currently enrolled at the Villains Academy :smiling_imp:.
 
 ## How to use ##
 
