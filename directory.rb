@@ -137,6 +137,7 @@ class StudentDirectory
       file.puts csv_line
     end
     file.close
+    puts "Save Successful"
   end
 
   def load_students(filename = "students.csv")
@@ -146,6 +147,7 @@ class StudentDirectory
       @students << {name: name, cohort: cohort.to_sym}
     end
     file.close
+    puts "Load Successful"
   end
 
   def try_load_students
