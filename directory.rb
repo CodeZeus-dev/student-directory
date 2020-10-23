@@ -27,6 +27,23 @@ class StudentDirectory
     interactive_menu if choice == 'y'
   end
 
+  def interactive_menu
+    loop do
+      print_menu
+      process(STDIN.gets.chomp)
+    end
+  end
+
+  def print_menu
+    puts "*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*"
+    puts "1. Input the students"
+    puts "2. Show the students"
+    puts "3. Save the list to students.csv"
+    puts "4. Load the student list from file"
+    puts "9. Exit"
+    puts "*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*"
+  end
+
   def input_students
     puts "Please enter the names of the students"
     puts "To finish, just hit return twice"
@@ -52,7 +69,7 @@ class StudentDirectory
     # get the first name
     puts "\nName: "
     name = STDIN.gets.chomp
-    return if name.nil?
+    return name, nil if name == ''
     # get the first cohort month
     puts "\nCohort: "
     cohort = STDIN.gets.chomp
@@ -61,7 +78,6 @@ class StudentDirectory
       puts "Oops... it looks like you made a typo... Try again!"
       cohort = STDIN.gets.chomp
     end
-
     return name, cohort
   end
 
@@ -85,16 +101,6 @@ class StudentDirectory
     }
   end
 
-  def print_menu
-    puts "*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*"
-    puts "1. Input the students"
-    puts "2. Show the students"
-    puts "3. Save the list to students.csv"
-    puts "4. Load the list from students.csv"
-    puts "9. Exit"
-    puts "*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*"
-  end
-
   def show_students
     print_header
     print_students_list
@@ -113,7 +119,7 @@ class StudentDirectory
       # save students in file
       save_students
     when "4"
-      load_students
+      try_load_students
     when "9"
       exit # termination of the program
     else
@@ -144,20 +150,16 @@ class StudentDirectory
 
   def try_load_students
     filename = ARGV.first # takes first argument from command line
-    load_students if filename.nil?
+    if filename.nil?
+      load_students
+      return
+    end
     if File.exists?(filename)
       load_students(filename)
       puts "Loaded #{@students.count} from #{filename}"
     else
       puts "Sorry, #{filename} doesn't exist."
       exit
-    end
-  end
-
-  def interactive_menu
-    loop do
-      print_menu
-      process(STDIN.gets.chomp)
     end
   end
 end
