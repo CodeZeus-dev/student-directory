@@ -52,3 +52,9 @@ waiting for user input (y or n) in order to proceed. If user input is *y*, the i
 If *n*, then nothing happens and the object is successfully created in both cases.
 
 > Once the user chooses an option from the menu (1 - 4 or 9), the methods of the class will guide the user through the required steps.
+
+To view the interactive menu at a later stage, simply run the following,
+
+```ruby
+villains_academy_SDirectory.interactive_menu
+```
