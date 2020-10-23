@@ -48,7 +48,6 @@ class StudentDirectory
       # add another student
       name, cohort = user_input
     end
-    # return the array of students
     @students
   end
 
@@ -97,18 +96,15 @@ class StudentDirectory
   def process(selection)
     case selection
     when "1"
-      # input the students
       input_students
     when "2"
-      # show the students
       show_students
     when "3"
-      # save students in file
       save_students
     when "4"
       try_load_students
     when "9"
-      exit # termination of the program
+      exit
     else
       puts "I don't know what you mean, try again"
     end
